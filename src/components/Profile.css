@@ -1,0 +1,99 @@
+/* ---------- RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- BASE ---------- */
+body {
+  background-color: #0b0b0b; /* sombre */
+  color: #f0e6d6;           /* texte clair */
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
+
+/* ---------- SECTION HEADER ---------- */
+.header-section {
+  display: flex;
+  flex-direction: column; /* empile verticalement la ligne flex + description */
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+/* Ligne du haut : photo à gauche, nom/role à droite */
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.profile-container {
+  flex-shrink: 0;
+}
+
+.profile-pic {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 4px solid #0f9ced;
+  object-fit: cover;
+  box-shadow: 0 0 25px rgba(243, 156, 18, 0.3);
+}
+
+.name-container {
+  max-width: 600px;
+}
+
+.fullname {
+  font-size: 3rem;
+  color: #0f9ced;
+  margin-bottom: 10px;
+}
+
+.role {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #f0e6d6;
+}
+
+/* Description sous la ligne du haut */
+.description-container {
+  max-width: 900px;
+  color: #d1d1d1;
+  line-height: 1.6;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background: rgba(15, 156, 237, 0.05);
+  box-shadow: 0 0 20px rgba(15, 156, 237, 0.1);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .header-top {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .fullname {
+    font-size: 2rem;
+  }
+
+  .role {
+    font-size: 1.2rem;
+  }
+
+  .description-container {
+    max-width: 100%;
+    padding: 15px;
+  }
+}

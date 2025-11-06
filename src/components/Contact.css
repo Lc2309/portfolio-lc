@@ -1,0 +1,64 @@
+.contact-section {
+  color: #f0f0f0;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.section-title {
+  font-size: 2em;
+  margin-bottom: 40px;
+  color: #0f9ced;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: scale(1.1);
+}
+
+.contact-icon {
+  font-size: 50px;
+  color: #0f9ced;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Quand la souris est sur le bloc entier (icône + texte) */
+.contact-item:hover .contact-icon {
+  color: #ffffff;
+}
+
+.contact-item:hover .contact-text {
+  color: #ffffff;
+}
+
+
+.contact-phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 10px;
+}
+
+.phone-icon {
+  color: #0f9ced;
+  font-size: 24px;
+}
+
+.phone-number {
+  font-size: 18px;
+  color: #f0f0f0;
+}
