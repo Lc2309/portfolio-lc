@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import ProjectCard from "./ProjectCard";
 import "./Projects.css";
+import { useLanguage } from "../../context/LanguageContext"; // 👈 contexte langue
 
 const Projects = () => {
+  const { language } = useLanguage(); // 👈 récupération de la langue
+  const isFr = language === "fr";
+
   const projects = [
     {
       id: 1,
-      title: "Application Web (HTML, JS, PhP, MySQL) sur la gestion de stock des matériels informatiques de la Paositra Malagasy",
+      titleFr: "Application Web (HTML, JS, PhP, MySQL) sur la gestion de stock des matériels de la Paositra Malagasy",
+      titleEn: "Web Application (HTML, JS, PHP, MySQL) for managing equipment stock at Paositra Malagasy",
       images: [
         "/assets/projets/projet1_img1.jpg",
         "/assets/projets/projet1_img2.jpg",
@@ -18,7 +23,8 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "Projet Personnel: Site de réservation d'hôtel (ReactJS, Laravel, MySQL, API) avec un système de paiement en ligne (Strape) et un Chatbot (Hugging Face)",
+      titleFr: "Projet Personnel: Site de réservation d'hôtel (ReactJS, Laravel, MySQL, API) avec un système de paiement en ligne (Stripe) et un Chatbot (Hugging Face)",
+      titleEn: "Personal Project: Hotel booking website (ReactJS, Laravel, MySQL, API) with online payment system (Stripe) and Chatbot (Hugging Face)",
       images: [
         "/assets/projets/projet2_img1.png",
         "/assets/projets/projet2_img2.png",
@@ -35,7 +41,8 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: "Quelques Affiches et Flyers Conçus pour l'église Ziona Mahafinaritra",
+      titleFr: "Quelques Affiches et Flyers Conçus pour l'église Ziona Mahafinaritra",
+      titleEn: "Some Posters and Flyers Designed for Ziona Mahafinaritra Church",
       images: [
         "/assets/projets/projet3_img1.jpg",
         "/assets/projets/projet3_img2.jpg",
@@ -70,20 +77,50 @@ const Projects = () => {
 
   return (
     <section className="projects-section" id="projects">
-      <h2 className="section-title">Mes Projets</h2>
+      <h2 className="section-title">{isFr ? "Mes Projets" : "My Projects"}</h2>
       <div className="projects-list">
         {projects.map((proj) => (
-          <ProjectCard key={proj.id} project={proj} openModal={openModal} />
+          <ProjectCard
+            key={proj.id}
+            project={{
+              ...proj,
+              title: isFr ? proj.titleFr : proj.titleEn,
+            }}
+            openModal={openModal}
+          />
         ))}
       </div>
 
       {/* Modal global */}
       {modalOpen && (
-        <div className="modal">
-          <button className="close-btn" onClick={closeModal}>&times;</button>
-          <button className="nav-btn left" onClick={prevImg}>&#10094;</button>
-          <img src={currentImages[currentImg]} alt="Project screenshot" className="modal-img" />
-          <button className="nav-btn right" onClick={nextImg}>&#10095;</button>
+        <div className="modal" onClick={closeModal}>
+          <button className="close-btn" onClick={closeModal}>
+            &times;
+          </button>
+          <button
+            className="nav-btn left"
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImg();
+            }}
+          >
+            &#10094;
+          </button>
+          <img
+            src={currentImages[currentImg]}
+            alt="Project screenshot"
+            className="modal-img"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button
+            className="nav-btn right"
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImg();
+            }}
+          >
+            &#10095;
+          </button>
         </div>
       )}
     </section>

@@ -60,6 +60,7 @@ body {
   font-size: 1.5rem;
   font-weight: 300;
   color: #f0e6d6;
+  text-align: center;
 }
 
 /* Description sous la ligne du haut */
@@ -86,14 +87,32 @@ body {
 
   .fullname {
     font-size: 2rem;
+    text-align: center;
   }
 
   .role {
     font-size: 1.2rem;
+    text-align: center;
   }
 
   .description-container {
     max-width: 100%;
     padding: 15px;
   }
+}
+
+.cv-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0f9ced;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.cv-btn:hover {
+  background-color: #0bb1f0;
 }
